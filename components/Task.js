@@ -7,9 +7,9 @@ const Task = ({text}) => {
   return (
     <View style={styles.item}>
       <BouncyCheckbox
+        bounceEffect="1"
         onPress={(isChecked) => {}}
         fillColor="#676D7D"
-        unfillColor="#D1DEE7"
       />
       <Text style={styles.itemText}>
         {text}
@@ -20,7 +20,7 @@ const Task = ({text}) => {
 
 const styles = StyleSheet.create({
   item: {
-    backgroundColor: 'rgba(52, 52, 52, 0.3)',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
     paddingHorizontal: 20,
     paddingVertical: 15,
     borderRadius: 10,
