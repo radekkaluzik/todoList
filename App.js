@@ -44,6 +44,7 @@ export default function App() {
           <TextInput
             style={styles.taskInput}
             placeholder={'Add a new task...'}
+            placeholderTextColor={'#fff'}
             onChangeText={text => setTask(text)}
             value={task}
           />
