@@ -1,10 +1,27 @@
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { ImageBackground, SafeAreaView, ScrollView, StyleSheet, Text, View, KeyboardAvoidingView, Platform, TextInput, TouchableOpacity } from 'react-native';
+import { ImageBackground, SafeAreaView, ScrollView, StyleSheet, Text, View, KeyboardAvoidingView, Platform, TextInput, TouchableOpacity, Keyboard } from 'react-native';
 import Task from './components/Task';
 import { MaterialIcons } from '@expo/vector-icons';
 import image from './assets/wallpaper.jpg';
 
 export default function App() {
+  const [task, setTask] = useState();
+  const [taskItems, setTaskItems] = useState([]);
+
+  const handleAddTask = () => {
+    // console.log(task);
+    Keyboard.dismiss();
+    setTaskItems([...taskItems, task]);
+    setTask(null);
+  }
+
+  const deleteTask = (index) => {
+    let taskItemsCopy = [...taskItems];
+    taskItemsCopy.splice(index, 1);
+    setTaskItems(taskItemsCopy);
+  }
+
   return (
     <ImageBackground source={image} style={styles.image}>
       <SafeAreaView style={styles.container}>
@@ -13,25 +30,11 @@ export default function App() {
             To Do List
           </Text>
           <ScrollView style={styles.items}>
-            <Task text="This is a task"/>
-            <Task text="This is another task"/>
-            <Task text="This is another task"/>
-            <Task text="This is another task"/>
-            <Task text="This is another task"/>
-            <Task text="This is another task"/>
-            <Task text="This is another task"/>
-            <Task text="This is another task"/>
-            <Task text="This is another task"/>
-            <Task text="This is another task"/>
-            <Task text="This is another task"/>
-            <Task text="This is another task"/>
-            <Task text="This is another task"/>
-            <Task text="This is another task"/>
-            <Task text="This is another task"/>
-            <Task text="This is another task"/>
-            <Task text="This is another task"/>
-            <Task text="This is another task"/>
-            <Task text="This is another task"/>
+            {
+              taskItems.map((item, index) => {
+                return <Task key={index} text={item} />
+              })
+            }
           </ScrollView>
         </View>
         <KeyboardAvoidingView
@@ -41,8 +44,10 @@ export default function App() {
           <TextInput
             style={styles.taskInput}
             placeholder={'Add a new task...'}
+            onChangeText={text => setTask(text)}
+            value={task}
           />
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => handleAddTask()}>
             <View style={styles.addTaskWrapper}>
               <MaterialIcons name="playlist-add" size={24} color="black" />
             </View>
@@ -94,7 +99,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     paddingHorizontal: 15,
     backgroundColor: 'rgba(52, 52, 52, 0.5)',
-    width: '70%',
+    flex: 1,
     fontWeight: 'bold',
     color: '#ffffff',
     borderRadius: 10,
@@ -106,6 +111,7 @@ const styles = StyleSheet.create({
     borderRadius: 60,
     justifyContent: 'center',
     alignItems: 'center',
+    marginLeft: 20,
   },
   addTaskText: {
     fontSize: 24,

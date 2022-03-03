@@ -35,7 +35,9 @@ const styles = StyleSheet.create({
   },
   itemText: {
     fontSize: 14,
-    color: 'white',
+    color: '#fff',
+    flexWrap: 'wrap',
+    flex: 1,
   },
   itemDeleteBtn: {
     marginLeft: 'auto',
