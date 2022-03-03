@@ -4,15 +4,22 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { Ionicons } from '@expo/vector-icons';
 
 const Task = ({text}) => {
+  const [checkboxState, setCheckboxState] = useState(false);
   
   return (
     <View style={styles.itemWrapper}>
       <BouncyCheckbox
         bounceEffect="1"
-        onPress={(isChecked) => {}}
+        isChecked={checkboxState}
+        onPress={() => setCheckboxState(!checkboxState)}
         fillColor="#676D7D"
       />
-      <Text style={styles.itemText}>
+      <Text
+        style={{
+          ...styles.itemText, 
+          textDecorationLine: checkboxState ? 'line-through' : 'none',
+        }}
+      >
         {text}
       </Text>
       <TouchableOpacity style={styles.itemDeleteBtn}>
