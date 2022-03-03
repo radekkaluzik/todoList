@@ -8,9 +8,9 @@ const Task = ({text}) => {
   return (
     <View style={styles.itemWrapper}>
       <BouncyCheckbox
+        bounceEffect="1"
         onPress={(isChecked) => {}}
         fillColor="#676D7D"
-        unfillColor="#D1DEE7"
       />
       <Text style={styles.itemText}>
         {text}

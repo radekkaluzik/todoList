@@ -4,8 +4,6 @@ import Task from './components/Task';
 import { MaterialIcons } from '@expo/vector-icons';
 import image from './assets/wallpaper.jpg';
 
-// const image = { uri: "https://static.posters.cz/image/1300/fototapety/cute-kitten-i77094.jpg" };
-
 export default function App() {
   return (
     <View style={styles.container}>
