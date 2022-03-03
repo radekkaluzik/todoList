@@ -16,7 +16,7 @@ export default function App() {
     setTask(null);
   }
 
-  const deleteTask = (index) => {
+  const handleDeleteTask = (index) => {
     let taskItemsCopy = [...taskItems];
     taskItemsCopy.splice(index, 1);
     setTaskItems(taskItemsCopy);
@@ -32,7 +32,7 @@ export default function App() {
           <ScrollView style={styles.items}>
             {
               taskItems.map((item, index) => {
-                return <Task key={index} text={item} />
+                return <Task key={index} id={index} delete={handleDeleteTask} text={item} />
               })
             }
           </ScrollView>

@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { Ionicons } from '@expo/vector-icons';
 
-const Task = ({text}) => {
+const Task = (props) => {
   const [checkboxState, setCheckboxState] = useState(false);
   
   return (
@@ -20,9 +20,9 @@ const Task = ({text}) => {
           textDecorationLine: checkboxState ? 'line-through' : 'none',
         }}
       >
-        {text}
+        {props.text}
       </Text>
-      <TouchableOpacity style={styles.itemDeleteBtn}>
+      <TouchableOpacity onPress={() => props.delete(props.id)} style={styles.itemDeleteBtn}>
         <Ionicons name="trash-outline" size={24} color="#fff" />
       </TouchableOpacity>
     </View>
