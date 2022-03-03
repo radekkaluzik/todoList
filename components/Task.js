@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
+import { Ionicons } from '@expo/vector-icons';
 
 const Task = ({text}) => {
   
   return (
-    <View style={styles.item}>
+    <View style={styles.itemWrapper}>
       <BouncyCheckbox
         onPress={(isChecked) => {}}
         fillColor="#676D7D"
@@ -14,12 +15,15 @@ const Task = ({text}) => {
       <Text style={styles.itemText}>
         {text}
       </Text>
+      <TouchableOpacity style={styles.itemDeleteBtn}>
+        <Ionicons name="trash-outline" size={24} color="#fff" />
+      </TouchableOpacity>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  item: {
+  itemWrapper: {
     backgroundColor: 'rgba(52, 52, 52, 0.3)',
     paddingHorizontal: 20,
     paddingVertical: 15,
@@ -33,9 +37,8 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: 'white',
   },
-  itemText: {
-    fontSize: 14,
-    color: 'white',
+  itemDeleteBtn: {
+    marginLeft: 'auto',
   },
 });
 
