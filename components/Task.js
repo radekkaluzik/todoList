@@ -24,7 +24,7 @@ const Task = ({text}) => {
 
 const styles = StyleSheet.create({
   itemWrapper: {
-    backgroundColor: 'rgba(52, 52, 52, 0.3)',
+    backgroundColor: 'rgba(52, 52, 52, 0.5)',
     paddingHorizontal: 20,
     paddingVertical: 15,
     borderRadius: 10,

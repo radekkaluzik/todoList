@@ -1,21 +1,38 @@
 import { StatusBar } from 'expo-status-bar';
-import { ImageBackground, StyleSheet, Text, View, KeyboardAvoidingView, Platform, TextInput, TouchableOpacity } from 'react-native';
+import { ImageBackground, SafeAreaView, ScrollView, StyleSheet, Text, View, KeyboardAvoidingView, Platform, TextInput, TouchableOpacity } from 'react-native';
 import Task from './components/Task';
 import { MaterialIcons } from '@expo/vector-icons';
 import image from './assets/wallpaper.jpg';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <ImageBackground source={image} style={styles.image}>
+    <ImageBackground source={image} style={styles.image}>
+      <SafeAreaView style={styles.container}>
         <View style={styles.tasksWrapper}>
           <Text style={styles.sectionTitle}>
             To Do List
           </Text>
-          <View style={styles.items}>
+          <ScrollView style={styles.items}>
             <Task text="This is a task"/>
             <Task text="This is another task"/>
-          </View>
+            <Task text="This is another task"/>
+            <Task text="This is another task"/>
+            <Task text="This is another task"/>
+            <Task text="This is another task"/>
+            <Task text="This is another task"/>
+            <Task text="This is another task"/>
+            <Task text="This is another task"/>
+            <Task text="This is another task"/>
+            <Task text="This is another task"/>
+            <Task text="This is another task"/>
+            <Task text="This is another task"/>
+            <Task text="This is another task"/>
+            <Task text="This is another task"/>
+            <Task text="This is another task"/>
+            <Task text="This is another task"/>
+            <Task text="This is another task"/>
+            <Task text="This is another task"/>
+          </ScrollView>
         </View>
         <KeyboardAvoidingView
           behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -32,16 +49,12 @@ export default function App() {
           </TouchableOpacity>
         </KeyboardAvoidingView>
         <StatusBar style="auto" />
-      </ImageBackground>
-    </View>
+      </SafeAreaView>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-  },
   image: {
     flex: 1,
     resizeMode: 'cover',
@@ -49,32 +62,38 @@ const styles = StyleSheet.create({
     paddingHorizontal: 40,
     paddingTop: 80,
   },
+  container: {
+    flex: 1,
+    paddingTop: StatusBar.currentHeight,
+        marginBottom: 30,
+  },
   sectionTitle: {
     color: '#000',
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 30,
   },
+
   items: {
     color: '#fff',
     fontSize: 24,
     fontWeight: 'bold',
+    marginBottom: 200,
   },
   writeTaskWrapper: {
     position: 'absolute',
-    bottom: 60,
+    bottom: 40,
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginHorizontal: 40,
     marginBottom: 30,
     // backgroundColor: 'yellow',
   },
   taskInput: {
     paddingVertical: 15,
     paddingHorizontal: 15,
-    backgroundColor: 'rgba(52, 52, 52, 0.3)',
+    backgroundColor: 'rgba(52, 52, 52, 0.5)',
     width: '70%',
     fontWeight: 'bold',
     color: '#ffffff',
